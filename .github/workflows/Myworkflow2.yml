@@ -1,5 +1,7 @@
 name: Test project
 on: [push,workflow_dispatch]
+env:
+  name: utkarsh
 jobs:
    test:
        runs-on: ubuntu-latest
@@ -14,6 +16,10 @@ jobs:
            run: npm ci
          - name: run tests
            run: npm test
+         - name: print env variable
+           run: |
+            echo "name $name"
+            echo "using context name is: ${{env.name}}}"
    
    deploy:
          needs: test
@@ -29,6 +35,12 @@ jobs:
            run: npm ci
          - name: build project
            run: npm run build
+         - name: upload artifact
+           uses: actions/upload-artifact@v3
+           with: 
+            name: alfa
+            path: target/*.jar
+          
          - name: deploy
            run: echo "deploying"
           
