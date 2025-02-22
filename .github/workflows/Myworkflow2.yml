@@ -19,7 +19,7 @@ jobs:
          - name: print env variable
            run: |
             echo "name $name"
-            echo "using context name is: ${{env.name}}}"
+            echo "using context name is: ${{env.name}}"
    
    deploy:
          needs: test
@@ -36,7 +36,7 @@ jobs:
          - name: build project
            run: npm run build
          - name: upload artifact
-           uses: actions/upload-artifact@v3
+           uses: actions/upload-artifact@v4
            with: 
             name: alfa
             path: target/*.jar
