@@ -2,6 +2,7 @@ name: Test project
 on: [push,workflow_dispatch]
 env:
   name: utkarsh
+  mypassword: ${{secrets.mypassword}}
 jobs:
    test:
        runs-on: ubuntu-latest
@@ -22,6 +23,8 @@ jobs:
             echo "using context name is: ${{env.name}}"
             echo "${{runner.os}}"
             echo "$RUNNER_OS"
+            echo "$mypassword"
+            echo "${{env.mypassword}}"
    
    deploy:
          needs: test
