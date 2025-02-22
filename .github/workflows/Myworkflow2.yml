@@ -20,6 +20,8 @@ jobs:
            run: |
             echo "name $name"
             echo "using context name is: ${{env.name}}"
+            echo "${{runner.os}}"
+            echo "${{runner_os}}"
    
    deploy:
          needs: test
