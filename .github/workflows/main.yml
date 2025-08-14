@@ -19,7 +19,7 @@
         runs-on: ubuntu-latest
         steps:
           - name: Iterate over All selected options
-            if: ${{github.event.inputs.choice}} == 'All'
+            if: ${{ github.event.inputs.choice == 'All' }}
             run: |
               selected_options="optionA,optionB,optionC"
               IFS=',' read -r -a array <<< "$selected_options"
@@ -28,7 +28,7 @@
                 # Perform actions based on the current item
               done
           - name: Iterate over One selected options
-            if: ${{github.event.inputs.choice}} != 'All'
+            if: ${{ github.event.inputs.choice != 'All' }}
             run: |
               selected_options=${{github.event.inputs.choice}}
               IFS=',' read -r -a array <<< "$selected_options"
