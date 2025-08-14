@@ -1,0 +1,29 @@
+    name: Testing
+
+    
+    on:
+      workflow_dispatch:
+        inputs:
+          selected_options:
+            description: 'Choose options to process'
+            type: choice
+            options:
+              - Option A
+              - Option B
+              - Option C
+            multiple: true
+            required: true
+
+    jobs:
+      loop-through-choices:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Iterate over selected options
+            run: |
+              selected_options="option1,option2,option3"
+              IFS=',' read -r -a array <<< "$selected_options"
+              for item in "${array[@]}"; do
+                echo "Processing $item"
+                # Perform actions based on the current item
+              done
+
