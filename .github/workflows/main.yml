@@ -20,6 +20,7 @@
         if: ${{github.event.inputs.choice}} == 'All'
         steps:
           - name: Iterate over All selected options
+            if: ${{github.event.inputs.choice}} == 'All'
             run: |
               selected_options="optionA,optionB,optionC"
               IFS=',' read -r -a array <<< "$selected_options"
@@ -27,15 +28,15 @@
                 echo "Processing $item"
                 # Perform actions based on the current item
               done
-
-        if: ${{github.event.inputs.choice}} != 'All'
-        steps:
-          - name: Iterate over single selected options
+          - name: Iterate over One selected options
+            if: ${{github.event.inputs.choice}} != 'All'
             run: |
-              selected_options="optionA"
+              selected_options=${{github.event.inputs.choice}}
               IFS=',' read -r -a array <<< "$selected_options"
               for item in "${array[@]}"; do
-                echo "Processing $item"
+                echo "Processing single $item"
                 # Perform actions based on the current item
               done
+
+
 
