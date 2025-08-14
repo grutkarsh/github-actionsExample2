@@ -18,6 +18,12 @@
       loop-through-choices:
         runs-on: ubuntu-latest
         steps:
+          - name: Get code
+            uses: actions/checkout@v3
+          - name: invoke
+            run: |
+                ls >myfile.txt
+                cat myfile.txt
           - name: Iterate over All selected options
             if: ${{ github.event.inputs.selected_options == 'All' }}
             run: |
