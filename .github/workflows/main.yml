@@ -12,13 +12,12 @@
               - Option B
               - Option C
               - All
-            multiple: true
             required: true
 
     jobs:
       loop-through-choices:
         runs-on: ubuntu-latest
-        if: github.event.inputs.choice == 'All'
+        if: ${{github.event.inputs.choice}} == 'All'
         steps:
           - name: Iterate over All selected options
             run: |
