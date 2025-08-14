@@ -11,6 +11,7 @@
               - Option A
               - Option B
               - Option C
+              - All
             multiple: true
             required: true
 
