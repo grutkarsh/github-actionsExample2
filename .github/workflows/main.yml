@@ -18,10 +18,11 @@
     jobs:
       loop-through-choices:
         runs-on: ubuntu-latest
+        if: github.event.inputs.choice == 'All'
         steps:
-          - name: Iterate over selected options
+          - name: Iterate over All selected options
             run: |
-              selected_options="option1,option2,option3"
+              selected_options="optionA,optionB,optionC"
               IFS=',' read -r -a array <<< "$selected_options"
               for item in "${array[@]}"; do
                 echo "Processing $item"
