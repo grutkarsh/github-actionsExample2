@@ -30,7 +30,7 @@
           - name: Iterate over One selected options
             if: ${{ github.event.inputs.choice != 'All' }}
             run: |
-              selected_options=${{github.event.inputs.choice}}
+              selected_options="${{github.event.inputs.choice}}"
               IFS=',' read -r -a array <<< "$selected_options"
               for item in "${array[@]}"; do
                 echo "golu $item"
